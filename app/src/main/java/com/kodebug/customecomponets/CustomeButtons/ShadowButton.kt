@@ -26,6 +26,7 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -38,12 +39,14 @@ fun ShadowButton(
     shape: Shape = RoundedCornerShape(32.dp),
     containerColor: Color,
     contentPadding: PaddingValues = PaddingValues(12.dp),
-    textColor: Color
+    textColor: Color,
+    letterSpacing: TextUnit = TextUnit.Unspecified,
+    shadowColor: Color = Color.Gray.copy(alpha = .4f),
 ) {
     Box(
         modifier = modifier
             .drawBehind {
-                val shadowColor = Color.LightGray.copy(alpha = 0.4f)
+                val shadowColor = shadowColor
                 val cornerRadius = 32.dp.toPx()
                 val blurRadius = 80f
                 val offsetX = 18.dp.toPx()
@@ -105,6 +108,7 @@ fun ShadowButton(
                         text = stringResource(id = text),
                         fontWeight = FontWeight.SemiBold,
                         fontSize = 16.sp,
+                        letterSpacing = letterSpacing,
                         color = textColor
                     )
                 }
