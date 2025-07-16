@@ -1,10 +1,13 @@
 package com.kodebug.customecomponets.CustomeButtons
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -33,15 +36,12 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun ShadowButton(
     onClick: () -> Unit,
-    text: Int, // stringResource
-    icon: Int? = null, // Svg file
     modifier: Modifier = Modifier,
     shape: Shape = RoundedCornerShape(32.dp),
     containerColor: Color,
     contentPadding: PaddingValues = PaddingValues(12.dp),
-    textColor: Color,
-    letterSpacing: TextUnit = TextUnit.Unspecified,
     shadowColor: Color = Color.Gray.copy(alpha = .4f),
+    content: @Composable RowScope.() -> Unit
 ) {
     Box(
         modifier = modifier
@@ -82,37 +82,14 @@ fun ShadowButton(
             colors = ButtonDefaults.buttonColors(containerColor = containerColor),
             contentPadding = contentPadding,
             elevation = ButtonDefaults.buttonElevation(defaultElevation = 0.dp),
-            modifier = Modifier
+            modifier = Modifier.fillMaxSize()
         ) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                icon?.let {
-                    Icon(
-                        painter = painterResource(id = it),
-                        contentDescription = text.toString(),
-                        tint = Color.Unspecified,
-                        modifier = Modifier.size(42.dp)
-                    )
-                    Spacer(modifier = Modifier.width(12.dp))
-                }
-
-                Box(
-                    modifier = Modifier
-                        .weight(1f)
-                        .fillMaxHeight(),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text(
-                        text = stringResource(id = text),
-                        fontWeight = FontWeight.SemiBold,
-                        fontSize = 16.sp,
-                        letterSpacing = letterSpacing,
-                        color = textColor
-                    )
-                }
-            }
+                horizontalArrangement = Arrangement.Center,
+                modifier = Modifier,
+                content = content
+            )
         }
     }
 }
