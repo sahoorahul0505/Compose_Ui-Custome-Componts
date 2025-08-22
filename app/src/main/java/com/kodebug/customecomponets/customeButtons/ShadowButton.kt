@@ -1,4 +1,4 @@
-package com.kodebug.customecomponets.CustomeButtons
+package com.kodebug.customecomponets.customeButtons
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
