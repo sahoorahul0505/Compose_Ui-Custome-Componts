@@ -12,6 +12,8 @@ import com.kodebug.customecomponets.CustomeButtons.ShadowButtonSourceCode
 import com.kodebug.customecomponets.HomeScreen
 import com.kodebug.customecomponets.expandableCard.ExpandCardScreen
 import com.kodebug.customecomponets.expandableCard.ExpandCardSourceCode
+import com.kodebug.customecomponets.flipableCardAnimation.FlippableCardScreen
+import com.kodebug.customecomponets.flipableCardAnimation.FlippableCardSourceCode
 
 @Composable
 fun AppNavigation() {
@@ -46,6 +48,13 @@ fun AppNavigation() {
         }
         composable<Routes.ExpandableCardSourceCode> {
             ExpandCardSourceCode()
+        }
+
+        composable<Routes.FlippableCard> {
+            FlippableCardScreen(navController = navController)
+        }
+        composable<Routes.FlippableCardSourceCode> {
+            FlippableCardSourceCode()
         }
     }
 }

@@ -54,7 +54,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.kodebug.customecomponets.navigation.Routes
 
@@ -65,14 +67,41 @@ fun HomeScreen(modifier: Modifier = Modifier, navController: NavHostController) 
     val compList = listOf(
         ComposableItem(
             name = "Shadow Button",
-            desc = "This a css style shadow button, with a shadow effect",
+            desc = "This composable creates a ShadowButton with a custom shadow effect, since the default \n" +
+                    "Compose shadow is not very impressive.\n" +
+                    "\n" +
+                    "The shadow is drawn manually using drawBehind with a Paint object, where blur, offset," +
+                    "corner radius, and shadow color are applied to a rounded rectangle.\n" +
+                    "\n" +
+                    "A Material3 Button is placed inside the Box with its own elevation set to 0.dp, so only" +
+                    "the custom shadow is visible. This approach gives more realistic and softer shadows" +
+                    "compared to the built-in Compose shadow.\n",
             route = Routes.ShadowButton
         ),
         ComposableItem(
             name = "Expandable Card",
-            desc = "This is an expandable card",
+            desc = "This composable creates an expandable card with two animations:\n"+
+                    "\n"+
+                    "A blur animation on the description section using animateDpAsState, which briefly blurs in and out when the card is pressed.\n"+
+                    "\n"+
+                    "A size transition using animateContentSize, which smoothly expands or collapses the card when toggled.\n"+
+                    "\n"+
+                    "The animations are driven by state (expanded, isPressed) and controlled with tween timing and easing.",
             route = Routes.ExpandableCard
-        )
+        ),
+        ComposableItem(
+            name = "Flippable Card",
+            desc = "This composable demonstrates a flippable card animation with multiple effects:\n" +
+                    "\n" +
+                    "Rotation animations using animateFloatAsState to smoothly flip the card and control text visibility.\n" +
+                    "\n" +
+                    "A background color transition using animateColorAsState, which changes between colors when the card is flipped.\n" +
+                    "\n" +
+                    "3D perspective applied through graphicsLayer with cameraDistance, along with clip, shadow, and background for styling.\n" +
+                    "\n" +
+                    "A clickable modifier toggles the state, revealing animated content (emoji/text) with easing effects.\n",
+            route = Routes.FlippableCard
+        ),
     )
 
 
@@ -132,7 +161,7 @@ fun HomeScreen(modifier: Modifier = Modifier, navController: NavHostController) 
             ) {
                 LazyColumn {
                     item {
-                        Spacer(modifier = modifier.size(16.dp))
+                        Spacer(modifier = modifier.size(24.dp))
                     }
                     items(compList) {
 
@@ -140,6 +169,9 @@ fun HomeScreen(modifier: Modifier = Modifier, navController: NavHostController) 
                             navController.navigate(it.route)
                         })
                         Spacer(modifier = Modifier.size(24.dp))
+                    }
+                    item {
+                        Spacer(modifier = modifier.size(24.dp))
                     }
                 }
             }
@@ -191,7 +223,7 @@ fun ComposableCard(item: ComposableItem, onIconClick: (ComposableItem) -> Unit) 
                 Text(
                     text = item.name, style = TextStyle(
                         fontSize = MaterialTheme.typography.titleLarge.fontSize,
-                        fontWeight = FontWeight.SemiBold,
+                        fontWeight = FontWeight.Bold,
                         color = Color.Black
                     )
                 )
@@ -210,8 +242,10 @@ fun ComposableCard(item: ComposableItem, onIconClick: (ComposableItem) -> Unit) 
                     text = item.desc,
                     style = TextStyle(
                         fontSize = MaterialTheme.typography.titleMedium.fontSize,
+                        fontWeight = FontWeight.SemiBold,
                         color = Color.Gray
-                    )
+                    ),
+                    lineHeight = 20.sp
                 )
             }
         }
