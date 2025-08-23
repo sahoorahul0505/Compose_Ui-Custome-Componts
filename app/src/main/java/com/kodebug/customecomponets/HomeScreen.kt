@@ -102,6 +102,23 @@ fun HomeScreen(modifier: Modifier = Modifier, navController: NavHostController) 
                     "A clickable modifier toggles the state, revealing animated content (emoji/text) with easing effects.\n",
             route = Routes.FlippableCard
         ),
+        ComposableItem(
+            name = "Card Slide Animation",
+            desc = "This effect is achieved using only two composables:\n" +
+                    "\n" +
+                    "Crossfade → animates the background image when the pager changes, giving a smooth transition instead of a hard swap.\n" +
+                    "\n" +
+                    "HorizontalPager → handles the sliding cards, where each card animates with:\n" +
+                    "\n" +
+                    "Scale (zoom in when focused)\n" +
+                    "\n" +
+                    "Saturation (color for focused, grayscale for others)\n" +
+                    "\n" +
+                    "Letter spacing (text expands when focused)\n" +
+                    "\n" +
+                    "Together, it creates a polished card slider with smooth focus-based animations.",
+            route = Routes.CardSlideAnimation
+        )
     )
 
 
@@ -171,7 +188,7 @@ fun HomeScreen(modifier: Modifier = Modifier, navController: NavHostController) 
                         Spacer(modifier = Modifier.size(24.dp))
                     }
                     item {
-                        Spacer(modifier = modifier.size(24.dp))
+                        Spacer(modifier = modifier.size(240.dp))
                     }
                 }
             }

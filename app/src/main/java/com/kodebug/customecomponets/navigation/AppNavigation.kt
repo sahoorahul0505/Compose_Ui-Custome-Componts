@@ -10,6 +10,8 @@ import com.kodebug.customecomponets.CustomComposableSourceCode
 import com.kodebug.customecomponets.customeButtons.ShadowButtonScreen
 import com.kodebug.customecomponets.customeButtons.ShadowButtonSourceCode
 import com.kodebug.customecomponets.HomeScreen
+import com.kodebug.customecomponets.cardSlideAnimation.CardSlideAnimationScreen
+import com.kodebug.customecomponets.cardSlideAnimation.CardSlideAnimationSourceCode
 import com.kodebug.customecomponets.expandableCard.ExpandCardScreen
 import com.kodebug.customecomponets.expandableCard.ExpandCardSourceCode
 import com.kodebug.customecomponets.flipableCardAnimation.FlippableCardScreen
@@ -55,6 +57,13 @@ fun AppNavigation() {
         }
         composable<Routes.FlippableCardSourceCode> {
             FlippableCardSourceCode()
+        }
+
+        composable<Routes.CardSlideAnimation> {
+            CardSlideAnimationScreen(navController = navController)
+        }
+        composable<Routes.CardSlideAnimationSourceCode> {
+            CardSlideAnimationSourceCode(navController = navController)
         }
     }
 }
