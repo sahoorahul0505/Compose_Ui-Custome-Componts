@@ -4,7 +4,7 @@ A collection of custom Jetpack Compose UI components with smooth animations and 
 This repo demonstrates how to go beyond the defaults of Compose with creative animations 
 and custom drawing.
 
----
+## 📌 Components
 
 ### 1. Shadow Button
 A custom button with a soft shadow, since Compose’s default shadow is limited.  
@@ -28,17 +28,7 @@ A card that expands/collapses smoothly with blur and size animations.
 📽️ Demo:  
 ![Expandable Card](demo/expandable_card.gif)
 
-
-
-## 🛠️ Tech Stack
-- [Jetpack Compose](https://developer.android.com/jetpack/compose)  
-- Material 3 Components  
-- Custom Canvas drawing (`drawBehind`)  
-- Compose Animation APIs  
-
 ---
-
-## 📌 Components
 
 ### 3. Flippable Card
 A card that flips with 3D rotation, color transition, and text/emoji animation.  
@@ -50,6 +40,20 @@ A card that flips with 3D rotation, color transition, and text/emoji animation.
 
 📽️ Demo:  
 ![Flippable Card](demo/flippable_card.gif)
+
+---
+
+### 4. Card Slide Animation
+A horizontal card slider with background crossfade and smooth focus-based animations.  
+**Features:**
+- Background image transition with `Crossfade`  
+- Card scaling with `animateFloatAsState`  
+- Grayscale ↔ Color animation using `ColorMatrix`  
+- Text letter-spacing animation for active card  
+- Built with only `Crossfade` and `HorizontalPager`  
+
+📽️ Demo:  
+![Card Slide Animation](demo/card_slide_animation.gif)
 
 ---
 
